@@ -1,0 +1,8 @@
+<% if @errors %>
+    <div class="errors">
+      
+      <% @errors.each do |key, value| %>
+        <p><%= "#{key} #{value}" %></p>
+      <% end %>
+    </div>
+<% end %>

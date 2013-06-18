@@ -1,7 +1,3 @@
-get '/' do
-  erb :index
-end
-
 get '/vimeo/authenticate' do
   User.create()
   base = Vimeo::Advanced::Base.new(ENV['CONSUMER_KEY'], ENV['CONSUMER_SECRET'])
@@ -41,51 +37,4 @@ get '/dubstep/videos' do
   dubstep_videos = video.get_by_tag("dubstep", { :page => "1", :per_page => "5", :full_response => "0", :sort => "most_liked" })["videos"]["video"][0..4]
   @video_ids = dubstep_videos.map {|video| video["id"]}
   erb :videos
-end
-
-#----------- SESSIONS -----------
-
-get '/sessions/new' do
-  @errors = errors 
-  erb :sign_in
-end
-
-post '/sessions' do
-  user = User.find_by_email(params[:email])
-  if user.nil?
-    session[:errors] = {username: "not found"}
-    redirect '/sessions/new'
-  elsif user.authenticate(params[:password]) == false
-    session[:errors] = {password: "incorrect"}
-    redirect '/sessions/new'    
-  else
-    session[:user_id] = user.id
-    redirect '/'
-  end
-end
-
-delete '/sessions/:id' do
-  session[:user_id] = nil
-end
-
-#----------- USERS -----------
-
-get '/users/new' do
-  # render sign-up page
-  @form_data = session.delete(:form_data) if session[:form_data]
-  @errors = errors 
-  erb :sign_up
-end
-
-post '/users' do
-  user = User.new(params[:user])
-  if user.valid?
-    user.save
-    session[:user_id] = user.id
-    redirect '/'
-  else
-    session[:errors] = user.errors
-    session[:form_data] = convert_for_session(params[:user])
-    redirect '/users/new'
-  end
 end

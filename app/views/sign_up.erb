@@ -1,0 +1,26 @@
+<div class="container">
+  <h1>Sign Up</h1>
+
+
+  <%= erb :errors %>
+  <form id="sign-up" method="post" action="/users">
+    <label class="label" for="name">Name</label>
+    <input type="text" name="user[name]" placeholder="Your name..."  <%= "value=#{@form_data[:name]}" if @form_data %> >
+    <br>
+
+    <label class="label" for="email">Email</label>
+    <input type="email" name="user[email]" placeholder="e.g., me@example.com" <%= "value=#{@form_data[:email]}" if @form_data %> >
+    <br>
+
+    <label class="label" for="password">Password</label>
+    <input type="password" name="user[password]" placeholder="6 or more characters">
+    <br>
+
+    <label class="label" for="password_confirmation">Password Confirmation</label>
+    <input type="password" name="user[password_confirmation]" placeholder="Please reenter your password">
+    <br>
+
+    <div class="submit"><input type="submit" value="Sign Up"></div>
+  </form>
+
+</div>

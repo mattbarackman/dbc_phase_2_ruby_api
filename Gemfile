@@ -23,6 +23,8 @@ gem 'oauth'
 
 gem 'awesome_print'
 
+gem 'bcrypt-ruby'
+
 group :test do
   gem 'faker'
   gem 'rspec'
