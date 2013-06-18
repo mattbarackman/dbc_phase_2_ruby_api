@@ -17,6 +17,12 @@ gem 'rake'
 
 gem 'shotgun'
 
+gem 'vimeo'
+
+gem 'oauth'
+
+gem 'awesome_print'
+
 group :test do
   gem 'faker'
   gem 'rspec'
