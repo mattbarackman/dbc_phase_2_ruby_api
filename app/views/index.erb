@@ -5,15 +5,21 @@
     <h1> Welcome <%=current_user.name%>! </h1>
 
     <p>
-    See <a href="enginecompanyone/videos">a few ads </a> from Matt's previous employer Engine Company 1!
+      See a few of your <a href="mattbarackman/likes"> favorite videos</a>!
     </p>
 
     <p>
-      See a few of Matt's <a href="mattbarackman/likes"> favorite videos</a>!
+     <form action="user/videos" method="post">
+      <input type="text" name="user" placeholder="e.g. enginecompany1">
+      <input type="submit" value="find their videos">
+     </form>
     </p>
 
     <p>
-      See a couple recent videos tagged with <a href="dubstep/videos"> dubstep</a>!
+     <form action="videos/tagged" method="post">
+      <input type="text" name="tag" placeholder="e.g. dubstep">
+      <input type="submit" value="find tagged videos">
+     </form>
     </p>
   
   <% else %>

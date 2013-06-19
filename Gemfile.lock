@@ -82,6 +82,7 @@ DEPENDENCIES
   awesome_print
   bcrypt-ruby
   faker
+  json
   oauth
   pg
   rake
