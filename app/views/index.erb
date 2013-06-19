@@ -4,27 +4,31 @@
 
     <h1> Welcome <%=current_user.name%>! </h1>
 
-    <p>
-      See a few of your <a href="mattbarackman/likes"> favorite videos</a>!
-    </p>
+      <% if current_user.token %>
+          <p>
+            See a few of your <a href="mattbarackman/likes"> favorite videos</a>!
+          </p>
 
-    <p>
-     <form action="user/videos" method="post">
-      <input type="text" name="user" placeholder="e.g. enginecompany1">
-      <input type="submit" value="find their videos">
-     </form>
-    </p>
+          <p>
+           <form action="user/videos" method="post">
+            <input type="text" name="user" placeholder="e.g. enginecompany1">
+            <input type="submit" value="find their videos">
+           </form>
+          </p>
 
-    <p>
-     <form action="videos/tagged" method="post">
-      <input type="text" name="tag" placeholder="e.g. dubstep">
-      <input type="submit" value="find tagged videos">
-     </form>
-    </p>
+          <p>
+           <form action="videos/tagged" method="post">
+            <input type="text" name="tag" placeholder="e.g. dubstep">
+            <input type="submit" value="find tagged videos">
+           </form>
+          </p>
+        <% else %>
+          <p> Please authenticate to continue! </p>
+        <% end %>
   
   <% else %>
   
-    <h1> Welcome! </h1>
+    <h1> Welcome! Please login or sign up! </h1>
   
   <% end %>
 </div>
